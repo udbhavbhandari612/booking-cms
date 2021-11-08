@@ -1,0 +1,57 @@
+<div *ngIf="vehicle">
+  <h1 mat-dialog-title>{{vehicle.name}}</h1>
+  <div mat-dialog-content>
+    <div id="carouselExampleControls" class="carousel slide mb-3 w-50 mx-auto" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item" [ngClass]="{'active': i === 0}" *ngFor="let photo of vehicle.photos; index as i">
+          <img [src]="photo.path" class="d-block mx-auto align-self-center">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <table class="table table-borderless w-75 mx-auto">
+      <tbody>
+        <tr class="border-bottom">
+          <td class="text-black-50 fw-bold">Name</td>
+          <td>{{vehicle.name}}</td>
+        </tr>
+        <tr class="border-bottom">
+          <td class="text-black-50 fw-bold">Capcity</td>
+          <td>{{vehicle.capacity}}</td>
+        </tr>
+        <tr class="border-bottom">
+          <td class="text-black-50 fw-bold">Base Price</td>
+          <td><i class="fa fa-dollar-sign"></i> {{vehicle.baseprice}}.00</td>
+        </tr>
+        <tr class="border-bottom">
+          <td class="text-black-50 fw-bold">Price for 0 to 5 miles</td>
+          <td><i class="fa fa-dollar-sign"></i> {{vehicle.price0to5}}.00</td>
+        </tr>
+        <tr class="border-bottom">
+          <td class="text-black-50 fw-bold">Price for 5 to 10 miles</td>
+          <td><i class="fa fa-dollar-sign"></i> {{vehicle.price5to10}}.00</td>
+        </tr>
+        <tr class="border-bottom">
+          <td class="text-black-50 fw-bold">Price for 10 to 15 miles</td>
+          <td><i class="fa fa-dollar-sign"></i> {{vehicle.price10to15}}.00</td>
+        </tr>
+        <tr class="border-bottom">
+          <td class="text-black-50 fw-bold">Price above 15 miles</td>
+          <td><i class="fa fa-dollar-sign"></i> {{vehicle.price15plus}}.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.container {
+  .no-data {
+    max-width: 50em;
+    background-color: whitesmoke;
+  }
+  .card {
+    max-width: 18em;
+    overflow: hidden;
+    .img-container{
+      height: 10em;
+    }
+  }
+}

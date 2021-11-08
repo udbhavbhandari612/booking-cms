@@ -1,0 +1,57 @@
+.container {
+    .photos-section {
+      button {
+        position: relative;
+        max-height: 10em;
+        max-width: 10em;
+        img {
+          max-height: 100%;
+          max-width: 100%;
+        }
+        &:hover .delete-btn,
+        .delete-btn > button {
+          opacity: 1;
+          z-index: 100;
+        }
+        .delete-btn {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          transition: 300ms ease;
+          z-index: -5;
+          opacity: 0;
+          background-color: rgba(0, 0, 0, 0.8);
+          button {
+            position: absolute;
+            right: 5%;
+            top: 5%;
+          }
+        }
+      }
+      img {
+        height: 5em;
+        max-width: 5em;
+      }
+      .add-img-btn {
+        position: relative;
+        color: rgba(0, 0, 0, 0.5);
+        input[type="file"] {
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 5;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  

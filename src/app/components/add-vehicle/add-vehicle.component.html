@@ -1,0 +1,104 @@
+<div class="container my-3">
+    <div class="w-75 d-flex flex-column mx-auto pb-5">
+        <form enctype="multipart/form-data" [formGroup]="formGroup" (submit)="handleForm()" autocomplete="off"
+            novalidate>
+            <div id="carouselExampleControls" class="carousel w-75 mx-auto slide mb-3" data-bs-ride="carousel">
+                <div class="carousel-inner" style="max-height: 25em; overflow: hidden;">
+                    <div class="carousel-item mh-100 mw-100" [ngClass]="{'active': i === 0}"
+                        *ngFor="let photo of addedPhotos; index as i">
+                        <img [src]="photo.url" class="d-block mw-100 mh-100 mx-auto my-auto" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="row mb-5 w-75 mx-auto photos-section border rounded">
+                <div *ngIf="addedPhotos.length === 0" class="fs-6 text-muted text-center my-4">Start adding photos by
+                    clicking on '+' icon</div>
+                <button mat-button type="button" *ngFor="let img of addedPhotos; index as i" class="py-2"
+                    data-bs-target="#carouselExampleControls" [attr.data-bs-slide-to]="i">
+                    <div class="delete-btn rounded">
+                        <button mat-icon-button (click)="deletePhoto($event, i)" type="button" color='error'>
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                    <img [src]="img.url">
+                </button>
+                <button mat-button class="add-img-btn py-2 mx-auto">
+                    <i class="far fa-plus-square fa-3x" aria-hidden="true"></i>
+                    <input type="file" title="Add photos" [disabled]='submitting' (change)='handlePhotos($event)'
+                        multiple accept="image/png, image/jpeg, image/jpg">
+                </button>
+
+            </div>
+            <div class="row">
+
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Vehicle Name</mat-label>
+                    <input matInput placeholder="ex: Limousine, XUV 700" required formControlName="name">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Vehicle capacity</mat-label>
+                    <input matInput placeholder="passenger capacity of vehicle" required formControlName="capacity">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Base fare</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="in dollars" required formControlName="baseprice">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+
+            </div>
+            <div class="row">
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price for upto 5 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="0 to 5 miles price" required formControlName="price0to5">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price for 5 to 10 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="5 to 10 miles price" required
+                        formControlName="price5to10">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price for 10 to 15 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="10 to 15 miles price" required
+                        formControlName="price10to15">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price after 15 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="After 15 miles price" required
+                        formControlName="price15plus">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <button mat-flat-button color='accent'
+                    [disabled]='formGroup.invalid || formGroup.pristine || submitting' type="submit"
+                    class="w-75 mx-auto">
+                    <div class="spinner-border m-2" role="status" *ngIf="submitting">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    {{submitting?'Adding Vehicle...':'Save changes'}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
