@@ -8,6 +8,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+
+
 
 
 @NgModule({
@@ -20,7 +24,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatListModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

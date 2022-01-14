@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+.bookings {
+  .booking {
+    max-width: 18em;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .bookings {
+    .booking {
+      max-width: 20em;
+    }
+  }
+}

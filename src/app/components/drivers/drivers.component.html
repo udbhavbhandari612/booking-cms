@@ -1,0 +1,38 @@
+<div class="container mt-2">
+    <button mat-button color='primary' class="border" (click)="addDriver()">
+        <i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add New Driver</button>
+
+    <div class="container mt-3" *ngIf="drivers?.length>0; else noDriver">
+        <div class="text-muted">{{drivers.length}} driver(s) found</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Contact No</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let driver of drivers; index as i" (click)="viewDriver(driver, $event)" class="link">
+                    <td class="fw-bold">{{i+1}}.</td>
+                    <td>{{driver.name}}</td>
+                    <td>{{driver.age}}</td>
+                    <td>{{driver.contact_number}}</td>
+                    <td>{{driver.email}}</td>
+                    <td><button mat-button color='error' (click)="deleteDriver(driver, $event)">
+                            <mat-icon>delete</mat-icon> &nbsp; Delete
+                        </button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ng-template #noDriver>
+        <div class="container mt-3">
+            <div class="text-muted">No drivers found</div>
+        </div>
+    </ng-template>
+</div>

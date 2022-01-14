@@ -14,6 +14,14 @@ import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewVehicleDialog } from './dialogs/view-vehicle/view-vehicle';
 import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
+import { DeleteVehicleDialog } from './dialogs/delete-vehicle/delete-vehicle';
+import { AirportsComponent } from './components/airports/airports.component';
+import { ViewAirportDialog } from './dialogs/view-airport/view-airport';
+import { BookingActionsDialog } from './dialogs/booking-actions/booking-actions';
+import { DriversComponent } from './components/drivers/drivers.component';
+import { AddDriverDialog } from './dialogs/add-driver/add-driver';
+import { RushHourDialogComponent } from './dialogs/rush-hour-dialog/rush-hour-dialog.component';
+import { ViewDriverComponent } from './dialogs/view-driver/view-driver.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +31,16 @@ import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.compon
     BookingsComponent,
     NavbarComponent,
     VehicleComponent,
+    AddVehicleComponent,
+    AirportsComponent,
+    DriversComponent,
     ViewVehicleDialog,
-    AddVehicleComponent
+    DeleteVehicleDialog,
+    ViewAirportDialog,
+    BookingActionsDialog,
+    AddDriverDialog,
+    RushHourDialogComponent,
+    ViewDriverComponent
   ],
   imports: [
     BrowserModule,

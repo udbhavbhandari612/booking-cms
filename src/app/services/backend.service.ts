@@ -1,14 +1,23 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import {environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
-  private apiEndpoint: String = "http://localhost:4000/api/admin"
+  private apiEndpoint: String = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
+
+  getRushHours() {
+    return this.http.get(`${this.apiEndpoint}/rush-hours`)
+  }
+
+  setRushHours(data) {
+    return this.http.post(`${this.apiEndpoint}/rush-hours`, data)
+  }
 
   getAllVehicles() {
     return this.http.get(`${this.apiEndpoint}/v`)
@@ -42,6 +51,10 @@ export class BackendService {
     Object.keys(_.omit(data, ['photos'])).forEach(prop => formData.append(prop, data[prop]))
     formData.append('photos', JSON.stringify(data.photos))
     return this.http.put(`${this.apiEndpoint}/v`, formData)
+  }
+
+  deleteVehicle(id) {
+    return this.http.delete(`${this.apiEndpoint}/v/${id}`)
   }
 
 }

@@ -1,0 +1,40 @@
+<div class="container pt-4 text-center">
+    <form novalidate class="d-flex justify-content-sm-center align-items-start w-100" (submit)="addAirport()">
+        <mat-form-field appearance="outline" class="w-75 p-0">
+            <mat-label>Airport name</mat-label>
+            <input matInput placeholder="Search for an airport to add" #airport autocomplete="off">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <button mat-flat-button matSuffix color='accent' class="ms-2 py-2" type="submit">Add Airport</button>
+
+    </form>
+    <div *ngIf="airports" class="text-start row">
+        <div class="mx-auto">
+            <div class="text-muted mb-4">{{airports.length}} airport(s) found</div>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Airport Name</th>
+                        <th scope="col">Vicinity</th>
+                        <th scope="col">Address</th>
+                        <th scope="col" class="ps-4">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let airport of airports; index as i" role="button" (click)="openAirport(airport)">
+                        <th>{{i+1}}</th>
+                        <td>{{airport.name}}</td>
+                        <td>{{airport.vicinity}}</td>
+                        <td>{{airport.formatted_address}}</td>
+                        <td><button mat-button color='error' (click)="deleteAirport(airport.place_id)">
+                                Delete <mat-icon>delete</mat-icon>
+                            </button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

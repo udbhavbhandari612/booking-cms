@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as _ from 'lodash';
+import { DeleteVehicleDialog } from 'src/app/dialogs/delete-vehicle/delete-vehicle';
 import { ViewVehicleDialog } from 'src/app/dialogs/view-vehicle/view-vehicle';
 import { BackendService } from 'src/app/services/backend.service';
 
@@ -13,7 +15,7 @@ import { BackendService } from 'src/app/services/backend.service';
 export class VehiclesComponent implements OnInit {
   vehicles: any = [];
   error: String;
-  query:String;
+  query: String;
   formGroup: FormGroup = new FormGroup({
     query: new FormControl('')
   })
@@ -53,10 +55,15 @@ export class VehiclesComponent implements OnInit {
     this.dialog.open(ViewVehicleDialog, { data: { id }, panelClass: ['w-100'] })
   }
 
-  handleInButtonClick(event, type, id?) {
+  handleInButtonClick(event, type, id) {
     event.stopPropagation()
-    if (type === 'delete')
-      return
+    if (type === 'delete') {
+      const ref = this.dialog.open(DeleteVehicleDialog, { data: { ..._.pick(this.vehicles.find(e => e.id === id), ['id', 'name']) } })
+      ref.afterClosed().subscribe((res) => {
+        if (res === 'reload')
+          this.vehicles.splice(this.vehicles.findIndex(e => e.id === id))
+      })
+    }
     if (type === 'update')
       this.router.navigate(['vehicles/' + id])
 

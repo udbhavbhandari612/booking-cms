@@ -1,0 +1,38 @@
+<div class="container w-100">
+  <h1 mat-dialog-title>Add new driver</h1>
+  <form [formGroup]='driver' class="d-flex flex-column" (submit)='addDriver()' novalidate>
+    <button mat-button class="add-img-btn py-2 mx-auto my-2">
+      <i class="far fa-plus-square fa-3x" aria-hidden="true" *ngIf="!photo"></i>
+      <img [src]="photo.url" alt="photo" *ngIf="photo">
+      <input type="file" title="Add photos" [disabled]='adding' (change)='handlePhotos($event)'
+        accept="image/png, image/jpeg, image/jpg">
+    </button>
+    <mat-form-field appearance="fill">
+      <mat-label>Full name</mat-label>
+      <input formControlName='name' matInput required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input formControlName='age' matInput type="number" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Contact number</mat-label>
+      <input formControlName='contact_number' matInput required>
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email address</mat-label>
+      <input formControlName='email' matInput required>
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+    <div class="d-flex justify-content-between mt-2">
+      <button [disabled]='adding' mat-button mat-dialog-close>Close</button>
+      <button [disabled]='adding' mat-flat-button color='primary' type="submit">
+        <div *ngIf="adding" class="spinner-border spinner-border-sm" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>&nbsp;
+        {{adding?'Adding...':'Add Driver'}}
+      </button>
+    </div>
+  </form>
+</div>

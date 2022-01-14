@@ -25,7 +25,7 @@
                     </button>
                     <div class="flex-grow-1"></div>
                     <div class="mb-2 mx-2 d-flex">
-                        <button mat-button (click)="handleInButtonClick($event, 'delete')" color='error'>Delete</button>
+                        <button mat-button (click)="handleInButtonClick($event, 'delete', vehicle.id)" color='error'>Delete</button>
                         <button class="ms-2" mat-button (click)="handleInButtonClick($event, 'update', vehicle.id)"
                             color='primary'>Update</button>
                     </div>

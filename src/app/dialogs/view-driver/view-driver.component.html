@@ -1,0 +1,33 @@
+<div *ngIf="driver">
+    <h1 mat-dialog-title>{{driver.name}}</h1>
+    <div mat-dialog-content class="matbody">
+
+        <img [src]="driver.photo_url" class="d-block mx-auto align-self-center profile-pic" *ngIf="driver.photo_url">
+        <img src="assets/profile_placeholder.png" class="d-block mx-auto align-self-center profile-pic" *ngIf="!driver.photo_url">
+
+        <table class="table table-borderless w-75 mx-auto">
+            <tbody>
+                <tr class="border-bottom">
+                    <td class="text-black-50 fw-bold">Name</td>
+                    <td>{{driver.name}}</td>
+                </tr>
+                <tr class="border-bottom">
+                    <td class="text-black-50 fw-bold">Age</td>
+                    <td>{{driver.age}}</td>
+                </tr>
+                <tr class="border-bottom">
+                    <td class="text-black-50 fw-bold">Contact No</td>
+                    <td>{{driver.contact_number}}</td>
+                </tr>
+                <tr class="border-bottom">
+                    <td class="text-black-50 fw-bold">Email</td>
+                    <td>{{driver.email}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+    </div>
+</div>

@@ -17,7 +17,9 @@ export class VehicleComponent implements OnInit {
 
   formGroup: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    capacity: new FormControl(0, [Validators.required, Validators.min(5), Validators.max(15)]),
+    passenger_capacity: new FormControl('', [Validators.required]),
+    child_seat_capacity: new FormControl('', [Validators.required]),
+    luggage_capacity: new FormControl('', [Validators.required]),
     baseprice: new FormControl(0, [Validators.required, Validators.min(0)]),
     price0to5: new FormControl(0, [Validators.required, Validators.min(0)]),
     price5to10: new FormControl(0, [Validators.required, Validators.min(0)]),
@@ -35,7 +37,7 @@ export class VehicleComponent implements OnInit {
   fetchVehicle(id) {
     this.backend.getVehicle(id).toPromise().then(res => {
       this.vehicle = res;
-      this.formGroup.setValue({ ..._.pick(this.vehicle, ['name', 'capacity', 'baseprice', 'price0to5', 'price5to10', 'price10to15', 'price15plus', 'photos']) })
+      this.formGroup.setValue({ ..._.pick(this.vehicle, ['name', 'passenger_capacity', 'child_seat_capacity', 'luggage_capacity', 'baseprice', 'price0to5', 'price5to10', 'price10to15', 'price15plus', 'photos']) })
 
     }).catch(err => { alert(err.message) })
   }

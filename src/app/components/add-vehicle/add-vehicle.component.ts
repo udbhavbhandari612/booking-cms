@@ -18,7 +18,9 @@ export class AddVehicleComponent implements OnInit {
 
   formGroup: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    capacity: new FormControl('', [Validators.required, Validators.min(5), Validators.max(15)]),
+    passenger_capacity: new FormControl('', [Validators.required]),
+    child_seat_capacity: new FormControl('', [Validators.required]),
+    luggage_capacity: new FormControl('', [Validators.required]),
     baseprice: new FormControl('', [Validators.required, Validators.min(0)]),
     price0to5: new FormControl('', [Validators.required, Validators.min(0)]),
     price5to10: new FormControl('', [Validators.required, Validators.min(0)]),

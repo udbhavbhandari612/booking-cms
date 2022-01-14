@@ -1,1 +1,50 @@
-<p>bookings works!</p>
+<div class="container mt-4">
+    <mat-form-field appearance="outline">
+        <mat-label>Filter by</mat-label>
+        <mat-select (selectionChange)='getBookings($event)'>
+            <mat-option value="">All</mat-option>
+            <mat-option value="approved">Approved</mat-option>
+            <mat-option value="rejected">Rejected</mat-option>
+            <mat-option value="in-progress">In Progress</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="text-muted fs-6">{{bookings?.length || 'No'}} booking(s) found</div>
+
+    <div class="bookings flex-wrap d-flex justify-content-center justify-content-sm-start mt-2">
+        <mat-card class="booking m-1 d-flex flex-column" *ngFor="let booking of bookings">
+            <mat-card-header>
+                <mat-card-title>{{booking.contact_details.fullname}} | {{booking.vehicle_details.name}}</mat-card-title>
+                <mat-card-subtitle class="fw-bold">#{{booking.booking_id}}</mat-card-subtitle>
+                <mat-card-subtitle>on {{booking.createdAt | date: 'medium'}}</mat-card-subtitle>
+            </mat-card-header>
+            <!-- <img mat-card-image [src]="booking.vehicle_details.photos[0].path"> -->
+            <mat-card-content>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td class="text-muted">Amount</td>
+                            <td class="text-success">$ {{booking.price_breakup.total_fare | number: '1.2-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card-content>
+            <div class="flex-grow-1"></div>
+            <mat-card-actions *ngIf="booking.status === 'in-progress' || !booking.status; else altStatus"
+                class="d-flex">
+                <button mat-button (click)="actionsOnBooking('approve', booking)" color='primary'>Approve</button>
+                <button mat-button (click)="actionsOnBooking('reject', booking)" color='error'> Reject</button>
+            </mat-card-actions>
+            <ng-template #altStatus>
+                <mat-card-footer>
+                    <div class="fs-6 text-capitalize text-center pb-2" [class.text-success]='booking.status === "approved"'
+                        [class.text-danger]='booking.status === "rejected"'>
+                        {{booking.status}}
+                    </div>
+                </mat-card-footer>
+            </ng-template>
+
+        </mat-card>
+    </div>
+
+</div>

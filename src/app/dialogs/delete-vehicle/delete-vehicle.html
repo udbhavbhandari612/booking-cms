@@ -1,0 +1,10 @@
+<div *ngIf="vehicle">
+  <h1 mat-dialog-title>Confirmation</h1>
+  <div mat-dialog-content>
+    Are you sure you want to delete <strong>{{vehicle.name}}</strong>?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button color='error' (click)="deleteVehicle()" cdkFocusInitial>Delete</button>
+  </div>
+</div>

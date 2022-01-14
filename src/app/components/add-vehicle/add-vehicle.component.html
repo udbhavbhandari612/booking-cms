@@ -47,8 +47,18 @@
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">
-                    <mat-label>Vehicle capacity</mat-label>
-                    <input matInput placeholder="passenger capacity of vehicle" required formControlName="capacity">
+                    <mat-label>Passenger capacity</mat-label>
+                    <input matInput placeholder="passenger capacity of vehicle" required formControlName="passenger_capacity">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Child seat capacity</mat-label>
+                    <input matInput placeholder="child seat capacity of vehicle" required formControlName="child_seat_capacity">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Luggage capacity</mat-label>
+                    <input matInput placeholder="luggage capacity of vehicle" required formControlName="luggage_capacity">
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">

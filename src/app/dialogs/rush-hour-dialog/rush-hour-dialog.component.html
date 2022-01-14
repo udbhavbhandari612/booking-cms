@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Set Rush hour settings</h2>
+<mat-dialog-content class="mat-typography">
+    <div>
+        <div class="h6">Set Rush hour</div>
+        <div class="mt-2">
+            <span>
+                <strong>Start:</strong> {{rushHour?.start_time}}
+            </span>
+            <span>
+                <strong>End:</strong> {{rushHour?.end_time}}
+            </span>
+        </div>
+        <div class="d-flex">
+            <mat-form-field appearance="fill">
+                <mat-label>Start time</mat-label>
+                <mat-select (selectionChange)='setTime("start_time",$event)'>
+                    <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="ms-2">
+                <mat-label>End time</mat-label>
+                <mat-select (selectionChange)='setTime("end_time",$event)'>
+                    <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <div class="h6">Set Rush hour fare</div>
+        <mat-form-field class="w-auto" appearance="fill">
+            <mat-label>Fare</mat-label>
+            <input type="number" matInput placeholder="Fare for rush hour" [value]='rushHour?.fare' [(ngModel)]="fare"
+                class="text-end">
+            <span matSuffix class="d-flex">
+                <div class="fs-5">.00</div>
+                <mat-icon>attach_money</mat-icon>
+            </span>
+        </mat-form-field>
+
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button class="text-success" (click)="save()">Save</button>
+</mat-dialog-actions>

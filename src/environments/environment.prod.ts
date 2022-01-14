@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://booking-backend-leetwolf.herokuapp.com/api/admin'
 };
