@@ -17,6 +17,7 @@ export class AddDriverDialog {
         age: new FormControl('', [Validators.required, Validators.min(18), Validators.max(100)]),
         email: new FormControl('', [Validators.required, Validators.email]),
         contact_number: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+        vehicle_details: new FormControl('', [Validators.required])
     });
     constructor(private driverService: DriverService, private dialog: MatDialogRef<AddDriverDialog>) {
 

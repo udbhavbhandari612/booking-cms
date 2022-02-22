@@ -22,6 +22,7 @@ import { DriversComponent } from './components/drivers/drivers.component';
 import { AddDriverDialog } from './dialogs/add-driver/add-driver';
 import { RushHourDialogComponent } from './dialogs/rush-hour-dialog/rush-hour-dialog.component';
 import { ViewDriverComponent } from './dialogs/view-driver/view-driver.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ViewDriverComponent } from './dialogs/view-driver/view-driver.component
     BookingActionsDialog,
     AddDriverDialog,
     RushHourDialogComponent,
-    ViewDriverComponent
+    ViewDriverComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,24 @@
 <mat-toolbar class="mat-elevation-z1">
-    <a class="text-decoration-none text-black" [routerLink]="[ '/']"><span>Booking CMS</span></a>
-    <div class="ms-3 flex-wrap d-flex">
-        <a class="text-decoration-none text-black" [routerLink]="[ '/']"><button mat-button>Home</button></a>
-        <button mat-button [matMenuTriggerFor]="vehicles">Vehicles</button>
-        <mat-menu #vehicles="matMenu">
-            <a class="text-decoration-none text-black" [routerLink]="[ '/add-vehicle']"><button mat-menu-item>Add
-                    Vehicle</button></a>
-            <a class="text-decoration-none text-black" [routerLink]="[ '/vehicles']"><button mat-menu-item>View All
-                    Vehicles</button></a>
-        </mat-menu>
-        <a class="text-decoration-none text-black"
-                [routerLink]="[ '/airports']"><button mat-button>Airports</button></a>
-        <a class="text-decoration-none text-black"
-                [routerLink]="[ '/bookings']"><button mat-button>Bookings</button></a>
-        <a class="text-decoration-none text-black"
-                [routerLink]="[ '/drivers']"><button mat-button>Drivers</button></a>
-    </div>
+        <a class="text-decoration-none text-black" [routerLink]="[ '/']"><span>Booking CMS</span></a>
+        <div class="ms-3 flex-wrap d-flex w-100">
+                <a class="text-decoration-none text-black" [routerLink]="[ '/']"><button mat-button>Home</button></a>
+                <button mat-button [matMenuTriggerFor]="vehicles">Vehicles</button>
+                <mat-menu #vehicles="matMenu">
+                        <a class="text-decoration-none text-black" [routerLink]="[ '/add-vehicle']"><button
+                                        mat-menu-item>Add
+                                        Vehicle</button></a>
+                        <a class="text-decoration-none text-black" [routerLink]="[ '/vehicles']"><button
+                                        mat-menu-item>View All
+                                        Vehicles</button></a>
+                </mat-menu>
+                <a class="text-decoration-none text-black" [routerLink]="[ '/airports']"><button
+                                mat-button>Airports</button></a>
+                <a class="text-decoration-none text-black" [routerLink]="[ '/bookings']"><button
+                                mat-button>Bookings</button></a>
+                <a class="text-decoration-none text-black" [routerLink]="[ '/drivers']"><button
+                                mat-button>Drivers</button></a>
+                <div style="flex: 1 1 0;"></div>
+                <a class="text-decoration-none text-black align-self-end" (click)="logout()"><button
+                                mat-button>Logout</button></a>
+        </div>
 </mat-toolbar>

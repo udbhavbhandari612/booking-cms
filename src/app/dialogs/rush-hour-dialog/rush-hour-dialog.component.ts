@@ -10,8 +10,10 @@ import { BackendService } from 'src/app/services/backend.service';
 })
 export class RushHourDialogComponent implements OnInit {
   times: any[] = []
-  rushHour: any;
-  fare: any;
+  morningRushHour: any;
+  nightRushHour: any;
+  morning_fare: any;
+  night_fare: any;
 
   constructor(private backend: BackendService, private dialog: MatDialogRef<RushHourDialogComponent>) { }
 
@@ -26,17 +28,30 @@ export class RushHourDialogComponent implements OnInit {
       else
         this.times.push(`${formatNumber(i % 12, 'en-us', '2.0-0')}:00 PM`)
     }
-    this.backend.getRushHours().toPromise().then(res => this.rushHour = res || { start_time: '', end_time: '', fare: 0 }).catch(err => console.log(err))
+    this.backend.getRushHours().toPromise().then((res: any) => {
+      this.morningRushHour = res.find(v => v.type === 'morning') || {
+        morning_start_time: '', morning_end_time: '', morning_fare: 0
+      }
+      this.nightRushHour = res.find(v => v.type === 'night') || {
+        night_start_time: '', night_end_time: '', night_fare: 0
+      }
+    }).catch(err => console.log(err))
   }
 
-  setTime(type, time) {
-    this.rushHour[type] = time.value
+  setMorningTime(type, time) {
+    this.morningRushHour[type] = time.value
+  }
+
+  setNightTime(type, time) {
+    this.nightRushHour[type] = time.value
   }
 
   save() {
-    if (this.fare)
-      this.rushHour.fare = this.fare
-    this.backend.setRushHours(this.rushHour).toPromise()
+    if (this.morning_fare)
+      this.morningRushHour.morning_fare = this.morning_fare
+    if (this.night_fare)
+      this.nightRushHour.night_fare = this.night_fare
+    this.backend.setRushHours({ ...this.morningRushHour, ...this.nightRushHour }).toPromise()
       .then(res => {
         alert('Successfully set!')
         this.dialog.close()

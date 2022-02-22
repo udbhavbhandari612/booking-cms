@@ -1,0 +1,14 @@
+<div class="container mx-auto mt-5">
+    <form [formGroup]="credentials" (submit)="signIn()" class="d-flex flex-column w-75 mat-elevation-z3 p-5 mx-auto rounded">
+        <legend class="my-4 mb-5 text-center">Login to Bookings CMS portal</legend>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your username</mat-label>
+            <input matInput placeholder="username" formControlName="username" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput placeholder="password" formControlName="password" type="password" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+    </form>
+</div>

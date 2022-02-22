@@ -1,36 +1,77 @@
 <h2 mat-dialog-title>Set Rush hour settings</h2>
 <mat-dialog-content class="mat-typography">
-    <div>
-        <div class="h6">Set Rush hour</div>
+    <div class="morning-fare">
+        <div class="h6">Set Morning Rush hour</div>
         <div class="mt-2">
             <span>
-                <strong>Start:</strong> {{rushHour?.start_time}}
+                <strong>Start:</strong> {{morningRushHour?.morning_start_time}}
             </span>
             <span>
-                <strong>End:</strong> {{rushHour?.end_time}}
+                <strong>End:</strong> {{morningRushHour?.morning_end_time}}
             </span>
         </div>
         <div class="d-flex">
             <mat-form-field appearance="fill">
                 <mat-label>Start time</mat-label>
-                <mat-select (selectionChange)='setTime("start_time",$event)'>
+                <mat-select (selectionChange)='setMorningTime("morning_start_time",$event)'>
                     <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill" class="ms-2">
                 <mat-label>End time</mat-label>
-                <mat-select (selectionChange)='setTime("end_time",$event)'>
+                <mat-select (selectionChange)='setMorningTime("morning_end_time",$event)'>
                     <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
 
 
-        <div class="h6">Set Rush hour fare</div>
+        <div class="h6">Set Morning Rush hour fare</div>
         <mat-form-field class="w-auto" appearance="fill">
             <mat-label>Fare</mat-label>
-            <input type="number" matInput placeholder="Fare for rush hour" [value]='rushHour?.fare' [(ngModel)]="fare"
-                class="text-end">
+            <input type="number" matInput placeholder="Fare for morning rush hour"
+                [value]='morningRushHour?.morning_fare' [(ngModel)]="morning_fare" class="text-end">
+            <span matSuffix class="d-flex">
+                <div class="fs-5">.00</div>
+                <mat-icon>attach_money</mat-icon>
+            </span>
+        </mat-form-field>
+
+    </div>
+
+    <hr class="my-4">
+
+    <div class="night-fare">
+        <div class="h6">Set Night Rush hour</div>
+        <div class="mt-2">
+            <span>
+                <strong>Start:</strong> {{nightRushHour?.night_start_time}}
+            </span>
+            <span>
+                <strong>End:</strong> {{nightRushHour?.night_end_time}}
+            </span>
+        </div>
+        <div class="d-flex">
+            <mat-form-field appearance="fill">
+                <mat-label>Start time</mat-label>
+                <mat-select (selectionChange)='setNightTime("night_start_time",$event)'>
+                    <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="ms-2">
+                <mat-label>End time</mat-label>
+                <mat-select (selectionChange)='setNightTime("night_end_time",$event)'>
+                    <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <div class="h6">Set Night Rush hour fare</div>
+        <mat-form-field class="w-auto" appearance="fill">
+            <mat-label>Fare</mat-label>
+            <input type="number" matInput placeholder="Fare for rush hour" [value]='nightRushHour?.night_fare'
+                [(ngModel)]="night_fare" class="text-end">
             <span matSuffix class="d-flex">
                 <div class="fs-5">.00</div>
                 <mat-icon>attach_money</mat-icon>

@@ -25,6 +25,11 @@
       <input formControlName='email' matInput required>
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Vehicle Details</mat-label>
+      <input formControlName='vehicle_details' matInput required>
+      <mat-icon matSuffix>info</mat-icon>
+    </mat-form-field>
     <div class="d-flex justify-content-between mt-2">
       <button [disabled]='adding' mat-button mat-dialog-close>Close</button>
       <button [disabled]='adding' mat-flat-button color='primary' type="submit">

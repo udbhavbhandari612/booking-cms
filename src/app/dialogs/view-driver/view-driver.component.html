@@ -3,7 +3,8 @@
     <div mat-dialog-content class="matbody">
 
         <img [src]="driver.photo_url" class="d-block mx-auto align-self-center profile-pic" *ngIf="driver.photo_url">
-        <img src="assets/profile_placeholder.png" class="d-block mx-auto align-self-center profile-pic" *ngIf="!driver.photo_url">
+        <img src="assets/profile_placeholder.png" class="d-block mx-auto align-self-center profile-pic"
+            *ngIf="!driver.photo_url">
 
         <table class="table table-borderless w-75 mx-auto">
             <tbody>
@@ -22,6 +23,10 @@
                 <tr class="border-bottom">
                     <td class="text-black-50 fw-bold">Email</td>
                     <td>{{driver.email}}</td>
+                </tr>
+                <tr class="border-bottom" *ngIf="driver.vehicle_details">
+                    <td class="text-black-50 fw-bold">Vehicle Details</td>
+                    <td>{{driver.vehicle_details}}</td>
                 </tr>
 
             </tbody>
