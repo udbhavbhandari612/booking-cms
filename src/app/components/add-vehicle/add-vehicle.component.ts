@@ -22,10 +22,15 @@ export class AddVehicleComponent implements OnInit {
     child_seat_capacity: new FormControl('', [Validators.required]),
     luggage_capacity: new FormControl('', [Validators.required]),
     baseprice: new FormControl('', [Validators.required, Validators.min(0)]),
-    price0to5: new FormControl('', [Validators.required, Validators.min(0)]),
-    price5to10: new FormControl('', [Validators.required, Validators.min(0)]),
-    price10to15: new FormControl('', [Validators.required, Validators.min(0)]),
-    price15plus: new FormControl('', [Validators.required, Validators.min(0)])
+    price0to10: new FormControl('', [Validators.required, Validators.min(0)]),
+    price10to25: new FormControl('', [Validators.required, Validators.min(0)]),
+    price25to40: new FormControl('', [Validators.required, Validators.min(0)]),
+    price40to60: new FormControl('', [Validators.required, Validators.min(0)]),
+    price60to80: new FormControl('', [Validators.required, Validators.min(0)]),
+    price80to100: new FormControl('', [Validators.required, Validators.min(0)]),
+    price100to120: new FormControl('', [Validators.required, Validators.min(0)]),
+    price120to150: new FormControl('', [Validators.required, Validators.min(0)]),
+    price150plus: new FormControl('', [Validators.required, Validators.min(0)]),
   })
 
   constructor(private backend: BackendService, private router: Router) { }

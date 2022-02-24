@@ -12,20 +12,39 @@
                 </mat-form-field>
             </form>
             <div class="text-black-50 g-1 w-75 mx-auto">{{vehicles.length}} vehicles found</div>
-            <div class="col justify-content-center w-100 d-flex flex-wrap">
+            <div class="col justify-content-start d-flex flex-wrap w-75 mx-auto">
                 <div class="card mx-1 mb-2 " *ngFor="let vehicle of vehicles">
                     <button mat-button class="text-decoration-none text-start" (click)="viewVehicle(vehicle.id)">
                         <div class="img-container d-flex align-items-center">
                             <img [src]="vehicle.photos[0]?.path || '../../../assets/car-placeholder.jpg'"
                                 class="card-img-top">
                         </div>
-                        <div class="card-body">
+                        <div class="card-body lh-base">
                             <div class="fs-6 fw-bold text-secondary">{{vehicle.name}}</div>
+                            <div class="fs-6 text-success mb-2">${{vehicle.baseprice}}.00</div>
+                            <div class="d-flex justify-content-between">
+                                <div
+                                    class="pt-2 border border-warn rounded px-3 fs-6 text-black-50 d-flex flex-column align-items-center">
+                                    <mat-icon class="mx-auto text-success">event_seat</mat-icon>
+                                    <strong>{{vehicle.capacity}}</strong>
+                                </div>
+                                <div
+                                    class="pt-2 border border-warn rounded px-3 fs-6 text-black-50 d-flex flex-column align-items-center">
+                                    <mat-icon class="mx-auto text-success">luggage</mat-icon>
+                                    <strong>{{vehicle.luggage_capacity}}</strong>
+                                </div>
+                                <div
+                                    class="pt-2 border border-warn rounded px-3 fs-6 text-black-50 d-flex flex-column align-items-center">
+                                    <mat-icon class="mx-auto text-success">crib</mat-icon>
+                                    <strong>{{vehicle.child_seat_capacity}}</strong>
+                                </div>
+                            </div>
                         </div>
                     </button>
                     <div class="flex-grow-1"></div>
                     <div class="mb-2 mx-2 d-flex">
-                        <button mat-button (click)="handleInButtonClick($event, 'delete', vehicle.id)" color='error'>Delete</button>
+                        <button mat-button (click)="handleInButtonClick($event, 'delete', vehicle.id)"
+                            color='error'>Delete</button>
                         <button class="ms-2" mat-button (click)="handleInButtonClick($event, 'update', vehicle.id)"
                             color='primary'>Update</button>
                     </div>

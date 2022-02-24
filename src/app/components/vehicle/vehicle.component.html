@@ -38,7 +38,7 @@
                     </div>
                     <img [src]="img.url">
                 </button>
-                <button mat-button class="add-img-btn py-2">
+                <button mat-button class="add-img-btn py-2" [ngClass]="{'mx-auto py-4': !vehicle.photos?.length}">
                     <i class="far fa-plus-square fa-3x" aria-hidden="true"></i>
                     <input type="file" title="Add photos" [disabled]='submitting' (change)='handlePhotos($event)'
                         multiple accept="image/png, image/jpeg, image/jpg">
@@ -54,17 +54,20 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">
                     <mat-label>Passenger capacity</mat-label>
-                    <input matInput placeholder="passenger capacity of vehicle" required formControlName="passenger_capacity">
+                    <input matInput placeholder="passenger capacity of vehicle" required
+                        formControlName="passenger_capacity">
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">
                     <mat-label>Child seat capacity</mat-label>
-                    <input matInput placeholder="child seat capacity of vehicle" required formControlName="child_seat_capacity">
+                    <input matInput placeholder="child seat capacity of vehicle" required
+                        formControlName="child_seat_capacity">
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">
                     <mat-label>Luggage capacity</mat-label>
-                    <input matInput placeholder="luggage capacity of vehicle" required formControlName="luggage_capacity">
+                    <input matInput placeholder="luggage capacity of vehicle" required
+                        formControlName="luggage_capacity">
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">
@@ -77,30 +80,66 @@
             </div>
             <div class="row">
                 <mat-form-field appearance="outline" class="col">
-                    <mat-label>Price for upto 5 miles</mat-label>
+                    <mat-label>Price for upto 10 miles</mat-label>
                     <i matSuffix class="fas fa-dollar-sign"></i>
-                    <input matInput type="number" placeholder="0 to 5 miles price" required formControlName="price0to5">
+                    <input matInput type="number" placeholder="0 to 10 miles price" required
+                        formControlName="price0to10">
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">
-                    <mat-label>Price for 5 to 10 miles</mat-label>
+                    <mat-label>Price for 10 to 25 miles</mat-label>
                     <i matSuffix class="fas fa-dollar-sign"></i>
-                    <input matInput type="number" placeholder="5 to 10 miles price" required
-                        formControlName="price5to10">
+                    <input matInput type="number" placeholder="10 to 25 miles price" required
+                        formControlName="price10to25">
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">
-                    <mat-label>Price for 10 to 15 miles</mat-label>
+                    <mat-label>Price for 25 to 40 miles</mat-label>
                     <i matSuffix class="fas fa-dollar-sign"></i>
-                    <input matInput type="number" placeholder="10 to 15 miles price" required
-                        formControlName="price10to15">
+                    <input matInput type="number" placeholder="25 to 40 miles price" required
+                        formControlName="price25to40">
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="col">
-                    <mat-label>Price after 15 miles</mat-label>
+                    <mat-label>Price for 40 to 60 miles</mat-label>
                     <i matSuffix class="fas fa-dollar-sign"></i>
-                    <input matInput type="number" placeholder="After 15 miles price" required
-                        formControlName="price15plus">
+                    <input matInput type="number" placeholder="40 to 60 miles price" required
+                        formControlName="price40to60">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price for 60 to 80 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="60 to 80 miles price" required
+                        formControlName="price60to80">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price for 80 to 100 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="80 to 100 miles price" required
+                        formControlName="price80to100">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price for 100 to 120 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="100 to 120 miles price" required
+                        formControlName="price100to120">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price for 120 to 150 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="120 to 150 miles price" required
+                        formControlName="price120to150">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col">
+                    <mat-label>Price after 150 miles</mat-label>
+                    <i matSuffix class="fas fa-dollar-sign"></i>
+                    <input matInput type="number" placeholder="after 150 miles price" required
+                        formControlName="price150plus">
                     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                 </mat-form-field>
             </div>
