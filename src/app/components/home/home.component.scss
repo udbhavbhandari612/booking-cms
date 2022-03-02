@@ -1,0 +1,32 @@
+.photos-section {
+  button {
+    position: relative;
+    max-height: 10em;
+    max-width: 10em;
+    img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+  img {
+    height: 10em;
+    max-width: 10em;
+    object-fit: contain;
+  }
+  .add-img-btn {
+    position: relative;
+    color: rgba(0, 0, 0, 0.5);
+    input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      cursor: pointer;
+    }
+  }
+}

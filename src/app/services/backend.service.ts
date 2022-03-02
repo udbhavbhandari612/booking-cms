@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import {environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +55,18 @@ export class BackendService {
 
   deleteVehicle(id) {
     return this.http.delete(`${this.apiEndpoint}/v/${id}`)
+  }
+
+  fetchMiscellaneous() {
+    return this.http.get(`${this.apiEndpoint}/random`);
+  }
+
+  createMiscellaneous(misc: any, photo?: any) {
+    const formData = new FormData()
+    if (photo)
+      formData.append(`image`, photo)
+    Object.keys(misc).forEach(prop => formData.append(prop, misc[prop]))
+    return this.http.post(`${this.apiEndpoint}/random`, formData)
   }
 
 }

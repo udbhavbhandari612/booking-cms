@@ -8,3 +8,44 @@
         </div>
     </div>
 </div>
+
+<div class="container w-75 my-3 border rounded" id="miscellaneous">
+    <div class="row mb-5 w-75 mx-auto photos-section">
+        <legend class="text-center mt-3">Miscellaneous Entries</legend>
+        <div class="mt-3">
+            <img *ngIf="logo?.url || misc?.value?.logo" class="mx-auto d-block"
+                [src]="logo?.url || misc?.value?.logo || ''">
+        </div>
+        <button mat-button title="Add or update logo" class="add-img-btn py-2 mx-auto">
+            <i class="far fa-plus-square fa-3x" aria-hidden="true"></i>
+            <div>Add or update Logo</div>
+            <input type="file" title="Add logo" [disabled]='uploading' (change)='handlePhoto($event)'
+                accept="image/png, image/jpeg, image/jpg">
+        </button>
+
+    </div>
+
+    <form [formGroup]="misc" (submit)="submitMisc()" class="d-flex flex-column px-sm-5 px-0">
+        <mat-form-field class="my-2" appearance="outline">
+            <mat-label>Support Phone No.</mat-label>
+            <input matInput placeholder="Phone no" formControlName="phone_no">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>It will appear on the website header</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="my-2" appearance="outline">
+            <mat-label>Support Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-hint>It will appear on the website header</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="my-2" appearance="outline">
+            <mat-label>Terms an Conditions URL</mat-label>
+            <input matInput placeholder="T&C URL" formControlName="terms_and_conditions">
+            <mat-icon matSuffix>policy</mat-icon>
+            <mat-hint>It will appear on checkout page</mat-hint>
+        </mat-form-field>
+        <div class="w-100 text-center">
+            <button class="w-50 py-1 my-2 mb-4" mat-raised-button color="primary" [disabled]="misc.invalid">Submit</button>
+        </div>
+    </form>
+</div>
